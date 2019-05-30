@@ -23,6 +23,7 @@ namespace Entrega3
         public Form1()
         {
             InitializeComponent();
+
             labels = new Label[alto, ancho];
             List<Bitmon> bitmons1 = new List<Bitmon>();
             LabelMes.Text = "Mes: " + Convert.ToString(mes);
@@ -286,6 +287,13 @@ namespace Entrega3
                     labels[i, j] = label;
                 }
             }
+            string info = "";
+            for (int k = 0; k < mapa1.Bitmons.Count; k++)
+            {
+                info += $"{mapa1.Bitmons[k].Tipo}, [{mapa1.Bitmons[k].Posicion[0]},{mapa1.Bitmons[k].Posicion[1]}], puntos de Vida: {mapa1.Bitmons[k].PuntosdeVida}\n";
+            }
+            labelinfo.Text = info;
+
         }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -304,6 +312,7 @@ namespace Entrega3
         {
             if (mes <= cantidad_mese)
             {
+                string info = "";
                 int[] posENT = { 0, 0 };
                 Ent papa = new Ent(posENT);
                 Ent mama = new Ent(posENT);
@@ -382,8 +391,14 @@ namespace Entrega3
                             labels[i, j].BackColor = Color.DarkRed;
                         }
                         tableLayoutPanel1.Controls.Add(labels[i, j], j, i);
+                        
                     }
                 }
+                for (int k = 0; k < mapa1.Bitmons.Count; k++)
+                {
+                    info += $"{mapa1.Bitmons[k].Tipo}, [{mapa1.Bitmons[k].Posicion[0]},{mapa1.Bitmons[k].Posicion[1]}], puntos de Vida: {mapa1.Bitmons[k].PuntosdeVida}\n";
+                }
+                labelinfo.Text = info;
                 mes++;
                 LabelMes.Text = "Mes: " + Convert.ToString(mes);
             }
