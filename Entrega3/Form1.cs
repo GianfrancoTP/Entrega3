@@ -439,9 +439,13 @@ namespace Entrega3
                 LabelMes.Text = "Mes: " + Convert.ToString(mes);
                 if (mes == cantidad_mese)
                 {
+                    /*
                     MesesBox.Enabled = true;
                     MesesBox.Visible = true;
                     CantidadMeses.Visible = true;
+                    */
+                    string info_end = "";
+
                     BotonMeses.Text = "Empezar simulacion";
                     labelInfoMes.Text = "";
                 }
