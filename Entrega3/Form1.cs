@@ -17,7 +17,7 @@ namespace Entrega3
         int ancho = 10;
         int cantidad_mese = 20;
         int mes = 0;
-        Mapa mapa1 = new Mapa();
+        public Mapa mapa1 = new Mapa();
         Terreno[,] opcion1 = new Terreno[10, 10];
         Label[,] labels;
         public Form1()
@@ -25,7 +25,7 @@ namespace Entrega3
             InitializeComponent();
             labels = new Label[alto, ancho];
             List<Bitmon> bitmons1 = new List<Bitmon>();
-
+            LabelMes.Text = "Mes: " + Convert.ToString(mes);
             Terreno Vegetación = new Terreno("Vegetacn");
             Terreno Acuático = new Terreno("Acuatico");
             Terreno Desierto = new Terreno("Desierto");
@@ -231,12 +231,35 @@ namespace Entrega3
                     label.Name = "label";
                     label.Size = new Size(51, 32);
                     label.TabIndex = 0;
+                    label.Font = new Font("Trebuchet MS", 16F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
                     string str = "";
                     var bitmons = mapa1.Bitmons.Where(x => (x.Posicion[0] == i) && (x.Posicion[1] == j)).ToList();
                     foreach (var bitmon in bitmons)
                     {
-                        str += bitmon.Tipo;
-                        str += ' ';
+                        if (bitmon.Tipo == "Dorvalo")
+                        {
+                            str += "🦅";
+                        }
+                        else if (bitmon.Tipo == "Doti")
+                        {
+                            str += "🐇";
+                        }
+                        else if (bitmon.Tipo == "Ent")
+                        {
+                            str += "🐢";
+                        }
+                        else if (bitmon.Tipo == "Gofue")
+                        {
+                            str += "🐉";
+                        }
+                        else if (bitmon.Tipo == "Taplan")
+                        {
+                            str += "🦎";
+                        }
+                        else if (bitmon.Tipo == "Wetar")
+                        {
+                            str += "🐟";
+                        }
                     }
                     label.Text = str;
                     if (opcion1[i,j].tipo == "Vegetacn")
@@ -312,8 +335,30 @@ namespace Entrega3
                         var bitmons = mapa1.Bitmons.Where(x => (x.Posicion[0] == i) && (x.Posicion[1] == j)).ToList();
                         foreach (var bitmon in bitmons)
                         {
-                            str += bitmon.Tipo;
-                            str += "";
+                            if (bitmon.Tipo == "Dorvalo")
+                            {
+                                str += "🦅";
+                            }
+                            else if (bitmon.Tipo == "Doti")
+                            {
+                                str += "🐇";
+                            }
+                            else if (bitmon.Tipo == "Ent")
+                            {
+                                str += "🐢";
+                            }
+                            else if (bitmon.Tipo == "Gofue")
+                            {
+                                str += "🐉";
+                            }
+                            else if (bitmon.Tipo == "Taplan")
+                            {
+                                str += "🦎";
+                            }
+                            else if (bitmon.Tipo == "Wetar")
+                            {
+                                str += "🐟";
+                            }
                         }
                         labels[i,j].Text = str;
                         if (opcion1[i, j].tipo == "Vegetacn")
@@ -340,6 +385,7 @@ namespace Entrega3
                     }
                 }
                 mes++;
+                LabelMes.Text = "Mes: " + Convert.ToString(mes);
             }
         }
     }
