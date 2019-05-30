@@ -13,20 +13,25 @@ namespace Entrega3
 {
     public partial class Form1 : Form
     {
-
+        int alto = 10;
+        int ancho = 10;
+        int cantidad_mese = 20;
+        int mes = 0;
+        Mapa mapa1 = new Mapa();
+        Terreno[,] opcion1 = new Terreno[10, 10];
+        Label[,] labels;
         public Form1()
         {
             InitializeComponent();
+            labels = new Label[alto, ancho];
             List<Bitmon> bitmons1 = new List<Bitmon>();
 
-            Mapa mapa1 = new Mapa();
             Terreno Vegetación = new Terreno("Vegetacn");
             Terreno Acuático = new Terreno("Acuatico");
             Terreno Desierto = new Terreno("Desierto");
             Terreno Nieve = new Terreno("NieveIce");
             Terreno Volcán = new Terreno("Volcanic");
             // Creamos la matriz de terrenos predefinida
-            Terreno[,] opcion1 = new Terreno[10, 10];
             opcion1[0, 0] = Desierto;
             opcion1[1, 0] = Desierto;
             opcion1[1, 1] = Desierto;
@@ -210,16 +215,11 @@ namespace Entrega3
             bitmons1.Add(Doti3);
             bitmons1.Add(Doti4);
 
-            mapa1.Alto = 10;
-            mapa1.Ancho = 10;
+            mapa1.Alto = alto;
+            mapa1.Ancho = ancho;
             mapa1.Terrenos = opcion1;
             mapa1.Bitmons = bitmons1;
 
-            int alto = 10;
-            int ancho = 10;
-            int cantidad_mese;
- 
-            Label[,] labels = new Label[alto,ancho];
             for (int i = 0; i < alto; i++)
             {
                 for (int j = 0; j < ancho; j++)
@@ -264,27 +264,83 @@ namespace Entrega3
                 }
             }
         }
-
-        
-
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Meses_Click(object sender, EventArgs e)
         {
+            if (mes <= cantidad_mese)
+            {
+                int[] posENT = { 0, 0 };
+                Ent papa = new Ent(posENT);
+                Ent mama = new Ent(posENT);
 
+                if (mes % 3 == 0)
+                {
+                    mapa1.CrearBitmon(papa, mama);
+                }
+                foreach (var bitmon in mapa1.Bitmons)
+                {
+                    bitmon.Mover(mapa1);
+                }
+                mapa1.Relaciones();
+                for (int i = 0; i < mapa1.Bitmons.Count; i++)
+                {
+                    mapa1.Bitmons[i].Envejecer();
+                    if (!mapa1.Bitmons[i].vivo)
+                    {
+                        mapa1.Bitmons.Remove(mapa1.Bitmons[i]);
+                        mapa1.Bitmons_muertos.Add(mapa1.Bitmons[i]);
+                        mapa1.bitmons_muertos_mes.Add(mapa1.Bitmons[i]);
+                    }
+                }
+                for (int i = 0; i < alto; i++)
+                {
+                    for (int j = 0; j < ancho; j++)
+                    {
+                        string str = "";
+                        var bitmons = mapa1.Bitmons.Where(x => (x.Posicion[0] == i) && (x.Posicion[1] == j)).ToList();
+                        foreach (var bitmon in bitmons)
+                        {
+                            str += bitmon.Tipo;
+                            str += "";
+                        }
+                        labels[i,j].Text = str;
+                        if (opcion1[i, j].tipo == "Vegetacn")
+                        {
+                            labels[i, j].BackColor = Color.Green;
+                        }
+                        else if (opcion1[i, j].tipo == "Acuatico")
+                        {
+                            labels[i, j].BackColor = Color.Blue;
+                        }
+                        else if (opcion1[i, j].tipo == "Desierto")
+                        {
+                            labels[i, j].BackColor = Color.SandyBrown;
+                        }
+                        else if (opcion1[i, j].tipo == "NieveIce")
+                        {
+                            labels[i, j].BackColor = Color.Snow;
+                        }
+                        else
+                        {
+                            labels[i, j].BackColor = Color.DarkRed;
+                        }
+                        tableLayoutPanel1.Controls.Add(labels[i, j], j, i);
+                    }
+                }
+                mes++;
+            }
         }
     }
 }
