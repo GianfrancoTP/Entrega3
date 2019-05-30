@@ -1,0 +1,10 @@
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\bin\Debug\Entrega3.exe.config
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\bin\Debug\Entrega3.exe
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\bin\Debug\Entrega3.pdb
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\obj\Debug\Entrega3.csprojAssemblyReference.cache
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\obj\Debug\Entrega3.Form1.resources
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\obj\Debug\Entrega3.Properties.Resources.resources
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\obj\Debug\Entrega3.csproj.GenerateResource.cache
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\obj\Debug\Entrega3.csproj.CoreCompileInputs.cache
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\obj\Debug\Entrega3.exe
+C:\Users\Ignacio Mayer\Documents\proyectoPOO\Proyecto_Entrega_3\Entrega3\obj\Debug\Entrega3.pdb
