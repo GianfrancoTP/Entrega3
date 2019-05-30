@@ -221,6 +221,8 @@ namespace Entrega3
             mapa1.Terrenos = opcion1;
             mapa1.Bitmons = bitmons1;
 
+            labelInfoMes.Text = "";
+
             for (int i = 0; i < alto; i++)
             {
                 for (int j = 0; j < ancho; j++)
@@ -287,7 +289,8 @@ namespace Entrega3
                     labels[i, j] = label;
                 }
             }
-            string info = "";
+
+            string info = "    Bitmons en el mapa:\n";
             for (int k = 0; k < mapa1.Bitmons.Count; k++)
             {
                 info += $"{mapa1.Bitmons[k].Tipo}, [{mapa1.Bitmons[k].Posicion[0]},{mapa1.Bitmons[k].Posicion[1]}], puntos de Vida: {mapa1.Bitmons[k].PuntosdeVida}\n";
@@ -310,9 +313,25 @@ namespace Entrega3
 
         private void Meses_Click(object sender, EventArgs e)
         {
-            if (mes <= cantidad_mese)
+            if (BotonMeses.Text == "Empezar simulacion")
             {
-                string info = "";
+                try
+                {
+                    cantidad_mese = Convert.ToInt32(MesesBox.Text);
+                    BotonMeses.Text = "Siguiente mes";
+                    MesesBox.Enabled = false;
+                    MesesBox.Visible = false;
+                    CantidadMeses.Visible = false;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Este numero no es valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else if (mes < cantidad_mese)
+            {
+                string infoMes = "";
+                string info = "    Bitmons en el mapa:\n";
                 int[] posENT = { 0, 0 };
                 Ent papa = new Ent(posENT);
                 Ent mama = new Ent(posENT);
@@ -396,11 +415,36 @@ namespace Entrega3
                 }
                 for (int k = 0; k < mapa1.Bitmons.Count; k++)
                 {
-                    info += $"{mapa1.Bitmons[k].Tipo}, [{mapa1.Bitmons[k].Posicion[0]},{mapa1.Bitmons[k].Posicion[1]}], puntos de Vida: {mapa1.Bitmons[k].PuntosdeVida}\n";
+                    info += $"\n{mapa1.Bitmons[k].Tipo}, [{mapa1.Bitmons[k].Posicion[0]},{mapa1.Bitmons[k].Posicion[1]}], puntos de Vida: {mapa1.Bitmons[k].PuntosdeVida}";
+                }
+
+                Console.WriteLine("");
+                foreach (var bitmon in mapa1.bitmons_creado_mes)
+                {
+                    infoMes += $"\nse creo un {bitmon.Tipo} en la posicion [{bitmon.Posicion[0]},{bitmon.Posicion[1]}]";
+                }
+                Console.WriteLine("");
+                foreach (var bitmon in mapa1.bitmons_muertos_mes)
+                {
+                    infoMes += $"\nse murio un {bitmon.Tipo} en la posicion [{bitmon.Posicion[0]},{bitmon.Posicion[1]}]";
+                }
+                if (mapa1.sobrepoblacion)
+                {
+                    infoMes += $"\nsobrepoblacion en el mes {mes}, se detuvo las simulacion";
+                    BotonMeses.Enabled = false;
                 }
                 labelinfo.Text = info;
+                labelInfoMes.Text = infoMes;
                 mes++;
                 LabelMes.Text = "Mes: " + Convert.ToString(mes);
+                if (mes == cantidad_mese)
+                {
+                    MesesBox.Enabled = true;
+                    MesesBox.Visible = true;
+                    CantidadMeses.Visible = true;
+                    BotonMeses.Text = "Empezar simulacion";
+                    labelInfoMes.Text = "";
+                }
             }
         }
     }
