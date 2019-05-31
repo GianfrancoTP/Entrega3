@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Linq;
+using System.IO;
 
 namespace Entrega3
 {
     public partial class Form1 : Form
     {
+        string info_end = ""; // Aqui reescribiremos la informacion estadística
         int alto = 10;
         int ancho = 10;
         int cantidad_mese = 20;
@@ -216,6 +218,8 @@ namespace Entrega3
             bitmons1.Add(Doti3);
             bitmons1.Add(Doti4);
 
+            Save.Enabled = false;
+            Save.Visible = false;
             mapa1.Alto = alto;
             mapa1.Ancho = ancho;
             mapa1.Terrenos = opcion1;
@@ -298,21 +302,14 @@ namespace Entrega3
             labelinfo.Text = info;
 
         }
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
 
         private void Meses_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            if (info_end != "")
+            {
+               
+            }
             if (BotonMeses.Text == "Empezar simulacion")
             {
                 try
@@ -328,7 +325,7 @@ namespace Entrega3
                     MessageBox.Show("Este numero no es valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if (mes < cantidad_mese)
+            if (mes < cantidad_mese && BotonMeses.Text != "Empezar simulacion")
             {
                 string infoMes = "";
                 string info = "    Bitmons en el mapa:\n";
@@ -348,6 +345,22 @@ namespace Entrega3
                 for (int i = 0; i < mapa1.Bitmons.Count; i++)
                 {
                     mapa1.Bitmons[i].Envejecer();
+                    if (mapa1.Bitmons[i].Tipo == "Taplan" && (mapa1.Terrenos[mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1]].tipo != "Vegetacn"))
+                    {
+                        mapa1.Bitmons[i].Envejecer();
+                    }
+                    else if (mapa1.Bitmons[i].Tipo == "Gofue" && (mapa1.Terrenos[mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1]].tipo != "Volcanic"))
+                    {
+                        mapa1.Bitmons[i].Envejecer();
+                    }
+                    else if (mapa1.Bitmons[i].Tipo == "Ent" && (mapa1.Terrenos[mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1]].tipo != "Vegetacn"))
+                    {
+                        mapa1.Bitmons[i].Envejecer();
+                    }
+                    else if(mapa1.Bitmons[i].Tipo == "Doti" && (mapa1.Terrenos[mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1]].tipo == "Volcanic"))
+                    {
+                        mapa1.Bitmons[i].Envejecer();
+                    }
                     if (!mapa1.Bitmons[i].vivo)
                     {
                         mapa1.Bitmons.Remove(mapa1.Bitmons[i]);
@@ -417,7 +430,6 @@ namespace Entrega3
                 {
                     info += $"\n{mapa1.Bitmons[k].Tipo}, [{mapa1.Bitmons[k].Posicion[0]},{mapa1.Bitmons[k].Posicion[1]}], puntos de Vida: {mapa1.Bitmons[k].PuntosdeVida}";
                 }
-
                 Console.WriteLine("");
                 foreach (var bitmon in mapa1.bitmons_creado_mes)
                 {
@@ -444,11 +456,123 @@ namespace Entrega3
                     MesesBox.Visible = true;
                     CantidadMeses.Visible = true;
                     */
-                    string info_end = "";
-
+                    info_end = "";
                     BotonMeses.Text = "Empezar simulacion";
-                    labelInfoMes.Text = "";
+
+                    List<string> tipo_bitmons = new List<string>();
+                    tipo_bitmons.Add("Taplan");
+                    tipo_bitmons.Add("Doti");
+                    tipo_bitmons.Add("Wetar");
+                    tipo_bitmons.Add("Dorvalo");
+                    tipo_bitmons.Add("Gofue");
+                    tipo_bitmons.Add("Ent");
+                    float numero_muertos = 0;
+                    float[] numero_creados = { 0, 0, 0, 0, 0, 0 };
+
+                    float promedio_vida = 0;
+                    foreach (var bitmon in mapa1.Bitmons_muertos)
+                    {
+                        promedio_vida += bitmon.TiempoVivido;
+                    }
+                    foreach (var bitmon in mapa1.Bitmons)
+                    {
+                        promedio_vida += bitmon.TiempoVivido;
+                    }
+                    promedio_vida = promedio_vida * 10 / (mapa1.Bitmons_muertos.Count + mapa1.Bitmons.Count);
+                    info_end += $"El promedio de vida de los bitmons fue de {(float)((int)promedio_vida) / 10} meses.\n";
+
+                    foreach (var tipo in tipo_bitmons)
+                    {
+                        promedio_vida = 0;
+                        var bitmons = mapa1.Bitmons.Where(x => x.Tipo == tipo).ToList();
+                        var bitmons_m = mapa1.Bitmons_muertos.Where(x => x.Tipo == tipo).ToList();
+                        foreach (var bit in bitmons)
+                        {
+                            promedio_vida += bit.TiempoVivido;
+                        }
+                        foreach (var bit in bitmons_m)
+                        {
+                            promedio_vida += bit.TiempoVivido;
+                        }
+                        promedio_vida = promedio_vida * 10 / (bitmons.Count + bitmons_m.Count);
+                        info_end += $"\nEl promedio de vida de los {tipo} fue de {(float)((int)promedio_vida) / 10} meses";
+                    }
+                    info_end += '\n';
+                    numero_muertos = numero_muertos / mes;
+                    for (int i = 0; i < 6; i++)
+                    {
+                        numero_creados[i] = numero_creados[i] / mes;
+                    }
+                    int k = 0;
+                    foreach (var tipo1 in tipo_bitmons)
+                    {
+                        info_end += $"\nLa tasa bruta de natalidad de los {tipo1} fue de {Math.Round(numero_creados[k], 1)} º /ºº";
+                        k++;
+                    }
+                    info_end += $"\nLa tasa bruta de mortalidad de los Bitmons fue de {numero_muertos} º/ºº";
+                    info_end += "\n";
+                    foreach (var tipo in tipo_bitmons)
+                    {
+                        var bitmons = mapa1.Bitmons_creados.Where(x => x.Tipo == tipo).ToList();
+                        info_end += $"\nLa cantidad de hijos en promedio de los {tipo} fue de {Math.Round((float)bitmons.Count / mes, 4)} hijos por mes";
+                    }
+                    info_end += "\n";
+                    foreach (var tipo in tipo_bitmons)
+                    {
+                        var bitmons = mapa1.Bitmons.Where(x => x.Tipo == tipo).ToList();
+                        if (bitmons.Count == 0)
+                        {
+                            info_end += $"\nLa especie {tipo} se extinguio";
+                        }
+                    }
+                    info_end += "\n";
+                    foreach (var tipo in tipo_bitmons)
+                    {
+                        if (mapa1.Bitmons_muertos.Count != 0)
+                        {
+                            var bitmons = mapa1.Bitmons_muertos.Where(x => x.Tipo == tipo).ToList();
+                            info_end += $"\nHay {bitmons.Count} {tipo} en el Bithalla. Corresponden al {Math.Round((float)(bitmons.Count * 100) / mapa1.Bitmons_muertos.Count, 1)} % ";
+                        }
+                        else
+                        {
+                            info_end += $"\nNo hay ningun bitmon muerto.";
+                            break;
+                        }
+                    }
+                    info_end += "\n";
+                    labelInfoMes.Text = info_end;
+                    Save.Enabled = true;
+                    Save.Visible = true;
                 }
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void Save_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.RestoreDirectory = true;
+            sfd.FileName = ".txt";
+            sfd.DefaultExt = ".txt";
+            sfd.Filter = "txt files (*.txt)|*.txt";
+            if (sfd.ShowDialog()== DialogResult.OK)
+            {
+                Stream fileStream = sfd.OpenFile();
+                StreamWriter sw = new StreamWriter(fileStream);
+
+                sw.Write(info_end);
+
+                sw.Close();
+                fileStream.Close();
+                
+            }
+        }
+
+        private void MesesBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BotonMeses.PerformClick();
             }
         }
     }

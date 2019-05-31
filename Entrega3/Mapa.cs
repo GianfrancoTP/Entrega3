@@ -145,6 +145,44 @@ namespace Entrega3
                     sobrepoblacion = true;
                 }
             }
+            else if (padre_ganador == "Ent")
+            {
+                for (int i = 0; i < Alto; i++)
+                {
+                    for (int j = 0; j < Ancho; j++)
+                    {
+                        int[] pos = { i, j };
+                        string tipo = Terrenos[i, j].tipo;
+                        if (tipo != "Acuatico" && tipo != "Volcanic")
+                        {
+                            bool hay_dos = false;
+                            foreach (var espacio in Espacios_2)
+                            {
+                                if (espacio[0] == pos[0] && espacio[1] == pos[1])
+                                {
+                                    hay_dos = true;
+                                }
+                            }
+                            if (!hay_dos)
+                            {
+                                espacios_disponibles.Add(pos);
+                            }
+                        }
+                    }
+                }
+                if (espacios_disponibles.Count > 0)
+                {
+                    numeroRan = random.Next(0, espacios_disponibles.Count);
+                    bitmon = new Wetar(espacios_disponibles[numeroRan]);
+                    Bitmons_creados.Add(bitmon);
+                    bitmons_creado_mes.Add(bitmon);
+                    Bitmons.Add(bitmon);
+                }
+                else
+                {
+                    sobrepoblacion = true;
+                }
+            }
             else
             {
                 for (int i = 0; i < Alto; i++)
