@@ -72,7 +72,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1290, 1290);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(607, 594);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // Titulo
@@ -82,7 +82,7 @@
             this.Titulo.AutoSize = true;
             this.Titulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Titulo.ForeColor = System.Drawing.SystemColors.Menu;
-            this.Titulo.Location = new System.Drawing.Point(686, 17);
+            this.Titulo.Location = new System.Drawing.Point(424, 29);
             this.Titulo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Titulo.Name = "Titulo";
             this.Titulo.Size = new System.Drawing.Size(353, 64);
@@ -107,10 +107,10 @@
             this.panel1.Controls.Add(this.labelinfo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.ForeColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(1684, 0);
+            this.panel1.Location = new System.Drawing.Point(882, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(450, 1858);
+            this.panel1.Size = new System.Drawing.Size(450, 1137);
             this.panel1.TabIndex = 3;
             // 
             // labelinfo
@@ -149,12 +149,12 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1684, 1558);
+            this.panel2.Size = new System.Drawing.Size(882, 852);
             this.panel2.TabIndex = 4;
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(1311, 196);
+            this.Save.Location = new System.Drawing.Point(667, 196);
             this.Save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(158, 94);
@@ -170,10 +170,10 @@
             this.panel3.Controls.Add(this.CantidadMeses);
             this.panel3.Controls.Add(this.MesesBox);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 1558);
+            this.panel3.Location = new System.Drawing.Point(0, 852);
             this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1684, 300);
+            this.panel3.Size = new System.Drawing.Size(882, 285);
             this.panel3.TabIndex = 5;
             // 
             // labelInfoMes
@@ -215,7 +215,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(2134, 1858);
+            this.ClientSize = new System.Drawing.Size(1332, 1137);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
