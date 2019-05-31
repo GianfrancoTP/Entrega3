@@ -47,8 +47,6 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 10;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -60,8 +58,8 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(44, 204);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(22, 106);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 10;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -74,7 +72,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(874, 685);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(547, 356);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // Titulo
@@ -82,20 +80,20 @@
             this.Titulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Titulo.AutoSize = true;
-            this.Titulo.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Titulo.Location = new System.Drawing.Point(258, 69);
-            this.Titulo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.Titulo.Font = new System.Drawing.Font("Matura MT Script Capitals", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Titulo.ForeColor = System.Drawing.SystemColors.Menu;
+            this.Titulo.Location = new System.Drawing.Point(374, 9);
             this.Titulo.Name = "Titulo";
-            this.Titulo.Size = new System.Drawing.Size(310, 61);
+            this.Titulo.Size = new System.Drawing.Size(211, 42);
             this.Titulo.TabIndex = 1;
             this.Titulo.Text = "Bitmonlandia";
             // 
             // BotonMeses
             // 
-            this.BotonMeses.Location = new System.Drawing.Point(44, 56);
-            this.BotonMeses.Margin = new System.Windows.Forms.Padding(4);
+            this.BotonMeses.Location = new System.Drawing.Point(22, 29);
+            this.BotonMeses.Margin = new System.Windows.Forms.Padding(2);
             this.BotonMeses.Name = "BotonMeses";
-            this.BotonMeses.Size = new System.Drawing.Size(162, 98);
+            this.BotonMeses.Size = new System.Drawing.Size(81, 51);
             this.BotonMeses.TabIndex = 2;
             this.BotonMeses.Text = "Empezar simulacion";
             this.BotonMeses.UseVisualStyleBackColor = true;
@@ -104,22 +102,24 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Controls.Add(this.labelinfo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(966, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.ForeColor = System.Drawing.Color.White;
+            this.panel1.Location = new System.Drawing.Point(738, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(586, 1288);
+            this.panel1.Size = new System.Drawing.Size(313, 538);
             this.panel1.TabIndex = 3;
             // 
             // labelinfo
             // 
             this.labelinfo.AutoSize = true;
             this.labelinfo.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelinfo.Location = new System.Drawing.Point(16, 10);
-            this.labelinfo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelinfo.Location = new System.Drawing.Point(8, 5);
+            this.labelinfo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelinfo.Name = "labelinfo";
-            this.labelinfo.Size = new System.Drawing.Size(104, 40);
+            this.labelinfo.Size = new System.Drawing.Size(52, 22);
             this.labelinfo.TabIndex = 0;
             this.labelinfo.Text = "label1";
             // 
@@ -129,32 +129,34 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelMes.AutoSize = true;
             this.LabelMes.Font = new System.Drawing.Font("Trebuchet MS", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelMes.Location = new System.Drawing.Point(577, 69);
-            this.LabelMes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LabelMes.ForeColor = System.Drawing.SystemColors.Menu;
+            this.LabelMes.Location = new System.Drawing.Point(289, 75);
+            this.LabelMes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LabelMes.Name = "LabelMes";
-            this.LabelMes.Size = new System.Drawing.Size(158, 61);
+            this.LabelMes.Size = new System.Drawing.Size(79, 29);
             this.LabelMes.TabIndex = 3;
             this.LabelMes.Text = "label1";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.Save);
+            this.panel2.Controls.Add(this.Titulo);
             this.panel2.Controls.Add(this.BotonMeses);
             this.panel2.Controls.Add(this.LabelMes);
             this.panel2.Controls.Add(this.tableLayoutPanel1);
-            this.panel2.Controls.Add(this.Titulo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(966, 929);
+            this.panel2.Size = new System.Drawing.Size(738, 483);
             this.panel2.TabIndex = 4;
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(763, 56);
+            this.Save.Location = new System.Drawing.Point(600, 106);
+            this.Save.Margin = new System.Windows.Forms.Padding(2);
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(173, 98);
+            this.Save.Size = new System.Drawing.Size(86, 51);
             this.Save.TabIndex = 4;
             this.Save.Text = "Guardar resultados";
             this.Save.UseVisualStyleBackColor = true;
@@ -167,20 +169,21 @@
             this.panel3.Controls.Add(this.CantidadMeses);
             this.panel3.Controls.Add(this.MesesBox);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 929);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Location = new System.Drawing.Point(0, 483);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(966, 359);
+            this.panel3.Size = new System.Drawing.Size(738, 55);
             this.panel3.TabIndex = 5;
             // 
             // labelInfoMes
             // 
             this.labelInfoMes.AutoSize = true;
             this.labelInfoMes.Font = new System.Drawing.Font("Trebuchet MS", 10.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelInfoMes.Location = new System.Drawing.Point(24, 38);
-            this.labelInfoMes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelInfoMes.ForeColor = System.Drawing.SystemColors.Info;
+            this.labelInfoMes.Location = new System.Drawing.Point(12, 20);
+            this.labelInfoMes.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelInfoMes.Name = "labelInfoMes";
-            this.labelInfoMes.Size = new System.Drawing.Size(97, 37);
+            this.labelInfoMes.Size = new System.Drawing.Size(47, 20);
             this.labelInfoMes.TabIndex = 6;
             this.labelInfoMes.Text = "label2";
             // 
@@ -188,33 +191,34 @@
             // 
             this.CantidadMeses.AutoSize = true;
             this.CantidadMeses.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CantidadMeses.Location = new System.Drawing.Point(24, 29);
-            this.CantidadMeses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.CantidadMeses.ForeColor = System.Drawing.SystemColors.Info;
+            this.CantidadMeses.Location = new System.Drawing.Point(12, 15);
+            this.CantidadMeses.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.CantidadMeses.Name = "CantidadMeses";
-            this.CantidadMeses.Size = new System.Drawing.Size(567, 40);
+            this.CantidadMeses.Size = new System.Drawing.Size(282, 22);
             this.CantidadMeses.TabIndex = 4;
             this.CantidadMeses.Text = "Cantidad de meses que desea simular:";
             // 
             // MesesBox
             // 
-            this.MesesBox.Location = new System.Drawing.Point(588, 33);
-            this.MesesBox.Margin = new System.Windows.Forms.Padding(4);
+            this.MesesBox.Location = new System.Drawing.Point(294, 17);
+            this.MesesBox.Margin = new System.Windows.Forms.Padding(2);
             this.MesesBox.Multiline = true;
             this.MesesBox.Name = "MesesBox";
-            this.MesesBox.Size = new System.Drawing.Size(88, 41);
+            this.MesesBox.Size = new System.Drawing.Size(46, 23);
             this.MesesBox.TabIndex = 3;
             this.MesesBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MesesBox_KeyDown);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(1552, 1288);
+            this.ClientSize = new System.Drawing.Size(1051, 538);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Bitmonlandia";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MesesBox_KeyDown);

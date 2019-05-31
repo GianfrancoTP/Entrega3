@@ -11,9 +11,12 @@ using System.Linq;
 using System.IO;
 
 namespace Entrega3
+
 {
+
     public partial class Form1 : Form
     {
+        
         string info_end = ""; // Aqui reescribiremos la informacion estadística
         int alto = 10;
         int ancho = 10;
@@ -27,7 +30,11 @@ namespace Entrega3
         public Form1()
         {
             InitializeComponent();
-
+            panel1.BackColor = Color.Transparent;
+            panel2.BackColor = Color.Transparent;
+            panel3.BackColor = Color.Transparent;
+            Bitmap img = new Bitmap(Application.StartupPath + "/img/95536.jpg");
+            this.BackgroundImage = img;
             labels = new Label[alto, ancho];
             List<Bitmon> bitmons1 = new List<Bitmon>();
             LabelMes.Text = "Mes: " + Convert.ToString(mes);
@@ -194,7 +201,7 @@ namespace Entrega3
             Doti Doti2 = new Doti(pos20);
             int[] pos21 = { 0, 0 };
             Doti Doti3 = new Doti(pos21);
-            int[] pos22 = { 5, 7 };
+            int[] pos22 = { 4, 7 };
             Doti Doti4 = new Doti(pos22);
 
             bitmons1.Add(taplan1);
@@ -255,7 +262,7 @@ namespace Entrega3
                         }
                         else if (bitmon.Tipo == "Ent")
                         {
-                            str += "🐢";
+                            str += "🌵";
                         }
                         else if (bitmon.Tipo == "Gofue")
                         {
@@ -329,6 +336,8 @@ namespace Entrega3
             }
             if (mes < cantidad_mese && BotonMeses.Text != "Empezar simulacion")
             {
+                panel1.BackColor = Color.FromArgb(58, 69, 44);
+                panel3.BackColor = Color.FromArgb(58, 69, 44);
                 string infoMes = "";
                 string info = "    Bitmons en el mapa:\n";
                 int[] posENT = { 0, 0 };
@@ -388,7 +397,7 @@ namespace Entrega3
                             }
                             else if (bitmon.Tipo == "Ent")
                             {
-                                str += "🐢";
+                                str += "🌵";
                             }
                             else if (bitmon.Tipo == "Gofue")
                             {
@@ -444,7 +453,7 @@ namespace Entrega3
                 }
                 if (mapa1.sobrepoblacion)
                 {
-                    infoMes += $"\nsobrepoblacion en el mes {mes}, se detuvo las simulacion";
+                    infoMes += $"\nsobrepoblacion en el mes {mes}, se detuvo la simulación";
                     BotonMeses.Enabled = false;
                 }
                 numero_muertos += mapa1.bitmons_muertos_mes.Count * 1000 / mapa1.Bitmons.Count;
