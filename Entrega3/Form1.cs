@@ -22,6 +22,8 @@ namespace Entrega3
         public Mapa mapa1 = new Mapa();
         Terreno[,] opcion1 = new Terreno[10, 10];
         Label[,] labels;
+        float numero_muertos = 0;
+        float[] numero_creados = { 0, 0, 0, 0, 0, 0 };
         public Form1()
         {
             InitializeComponent();
@@ -269,7 +271,7 @@ namespace Entrega3
                         }
                     }
                     label.Text = str;
-                    if (opcion1[i,j].tipo == "Vegetacn")
+                    if (opcion1[i, j].tipo == "Vegetacn")
                     {
                         label.BackColor = Color.Green;
                     }
@@ -308,7 +310,7 @@ namespace Entrega3
             this.Cursor = Cursors.WaitCursor;
             if (info_end != "")
             {
-               
+
             }
             if (BotonMeses.Text == "Empezar simulacion")
             {
@@ -357,7 +359,7 @@ namespace Entrega3
                     {
                         mapa1.Bitmons[i].Envejecer();
                     }
-                    else if(mapa1.Bitmons[i].Tipo == "Doti" && (mapa1.Terrenos[mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1]].tipo == "Volcanic"))
+                    else if (mapa1.Bitmons[i].Tipo == "Doti" && (mapa1.Terrenos[mapa1.Bitmons[i].Posicion[0], mapa1.Bitmons[i].Posicion[1]].tipo == "Volcanic"))
                     {
                         mapa1.Bitmons[i].Envejecer();
                     }
@@ -401,7 +403,7 @@ namespace Entrega3
                                 str += "🐟";
                             }
                         }
-                        labels[i,j].Text = str;
+                        labels[i, j].Text = str;
                         if (opcion1[i, j].tipo == "Vegetacn")
                         {
                             labels[i, j].BackColor = Color.Green;
@@ -423,7 +425,7 @@ namespace Entrega3
                             labels[i, j].BackColor = Color.DarkRed;
                         }
                         tableLayoutPanel1.Controls.Add(labels[i, j], j, i);
-                        
+
                     }
                 }
                 for (int k = 0; k < mapa1.Bitmons.Count; k++)
@@ -445,6 +447,30 @@ namespace Entrega3
                     infoMes += $"\nsobrepoblacion en el mes {mes}, se detuvo las simulacion";
                     BotonMeses.Enabled = false;
                 }
+                numero_muertos += mapa1.bitmons_muertos_mes.Count * 1000 / mapa1.Bitmons.Count;
+                List<string> tipo_bitmons = new List<string>();
+                tipo_bitmons.Add("Taplan");
+                tipo_bitmons.Add("Doti");
+                tipo_bitmons.Add("Wetar");
+                tipo_bitmons.Add("Dorvalo");
+                tipo_bitmons.Add("Gofue");
+                tipo_bitmons.Add("Ent");
+                int count = 0;
+                foreach (var tipo in tipo_bitmons)
+                {
+                    var bitmons = mapa1.Bitmons.Where(x => x.Tipo == tipo).ToList();
+                    var bitmons_nuevo = mapa1.bitmons_creado_mes.Where(x => x.Tipo == tipo).ToList();
+                    try
+                    {
+                        numero_creados[count] += (float)bitmons_nuevo.Count * 1000 / bitmons.Count;
+                    }
+                    catch (Exception)
+                    {
+                        numero_creados[count] += 0;
+                    }
+                    count++;
+                }
+
                 labelinfo.Text = info;
                 labelInfoMes.Text = infoMes;
                 mes++;
@@ -458,16 +484,6 @@ namespace Entrega3
                     */
                     info_end = "";
                     BotonMeses.Text = "Empezar simulacion";
-
-                    List<string> tipo_bitmons = new List<string>();
-                    tipo_bitmons.Add("Taplan");
-                    tipo_bitmons.Add("Doti");
-                    tipo_bitmons.Add("Wetar");
-                    tipo_bitmons.Add("Dorvalo");
-                    tipo_bitmons.Add("Gofue");
-                    tipo_bitmons.Add("Ent");
-                    float numero_muertos = 0;
-                    float[] numero_creados = { 0, 0, 0, 0, 0, 0 };
 
                     float promedio_vida = 0;
                     foreach (var bitmon in mapa1.Bitmons_muertos)
@@ -514,7 +530,7 @@ namespace Entrega3
                     foreach (var tipo in tipo_bitmons)
                     {
                         var bitmons = mapa1.Bitmons_creados.Where(x => x.Tipo == tipo).ToList();
-                        info_end += $"\nLa cantidad de hijos en promedio de los {tipo} fue de {Math.Round((float)bitmons.Count / mes, 4)} hijos por mes";
+                        info_end += $"\nLa cantidad de hijos en promedio de los {tipo} fue de {Math.Round((float)bitmons.Count / mes, 1)} hijos por mes";
                     }
                     info_end += "\n";
                     foreach (var tipo in tipo_bitmons)
@@ -555,7 +571,7 @@ namespace Entrega3
             sfd.FileName = ".txt";
             sfd.DefaultExt = ".txt";
             sfd.Filter = "txt files (*.txt)|*.txt";
-            if (sfd.ShowDialog()== DialogResult.OK)
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
                 Stream fileStream = sfd.OpenFile();
                 StreamWriter sw = new StreamWriter(fileStream);
@@ -564,7 +580,7 @@ namespace Entrega3
 
                 sw.Close();
                 fileStream.Close();
-                
+
             }
         }
 
@@ -576,4 +592,5 @@ namespace Entrega3
             }
         }
     }
+
 }
