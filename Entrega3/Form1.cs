@@ -332,10 +332,12 @@ namespace Entrega3
                 catch (Exception)
                 {
                     MessageBox.Show("Este numero no es valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MesesBox.Text = "";
                 }
             }
             if (mes < cantidad_mese && BotonMeses.Text != "Empezar simulacion")
             {
+                mapa1.bitmons_creado_mes.Clear();
                 panel1.BackColor = Color.FromArgb(58, 69, 44);
                 panel3.BackColor = Color.FromArgb(58, 69, 44);
                 string infoMes = "";
@@ -445,6 +447,7 @@ namespace Entrega3
                 foreach (var bitmon in mapa1.bitmons_creado_mes)
                 {
                     infoMes += $"\nse creo un {bitmon.Tipo} en la posicion [{bitmon.Posicion[0]},{bitmon.Posicion[1]}]";
+                    Console.WriteLine();
                 }
                 Console.WriteLine("");
                 foreach (var bitmon in mapa1.bitmons_muertos_mes)
@@ -486,11 +489,6 @@ namespace Entrega3
                 LabelMes.Text = "Mes: " + Convert.ToString(mes);
                 if (mes == cantidad_mese)
                 {
-                    /*
-                    MesesBox.Enabled = true;
-                    MesesBox.Visible = true;
-                    CantidadMeses.Visible = true;
-                    */
                     info_end = "";
                     BotonMeses.Text = "Empezar simulacion";
 

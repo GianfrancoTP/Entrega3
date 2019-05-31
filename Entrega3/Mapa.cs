@@ -85,7 +85,6 @@ namespace Entrega3
         public void CrearBitmon(Bitmon papa, Bitmon mama)
         {
             List<int[]> espacios_disponibles = new List<int[]>();
-            bitmons_creado_mes.Clear();
             float probabilidad;
             try
             {
@@ -173,7 +172,7 @@ namespace Entrega3
                 if (espacios_disponibles.Count > 0)
                 {
                     numeroRan = random.Next(0, espacios_disponibles.Count);
-                    bitmon = new Wetar(espacios_disponibles[numeroRan]);
+                    bitmon = new Ent(espacios_disponibles[numeroRan]);
                     Bitmons_creados.Add(bitmon);
                     bitmons_creado_mes.Add(bitmon);
                     Bitmons.Add(bitmon);
@@ -225,13 +224,6 @@ namespace Entrega3
                         Bitmons.Add(bitmon);
                         bitmons_creado_mes.Add(bitmon);
                     }
-                    else if (padre_ganador == "Ent")
-                    {
-                        bitmon = new Ent(espacios_disponibles[numeroRan]);
-                        Bitmons_creados.Add(bitmon);
-                        Bitmons.Add(bitmon);
-                        bitmons_creado_mes.Add(bitmon);
-                    }
                     else if (padre_ganador == "Gofue")
                     {
                         bitmon = new Gofue(espacios_disponibles[numeroRan]);
@@ -255,6 +247,7 @@ namespace Entrega3
             papa.CantidadDereproducciones++;
             mama.CantidadDereproducciones++;
             this.Actualizar_espacios();
+            Console.WriteLine($"{papa.Tipo} en [{papa.Posicion[0]},{papa.Posicion[1]}] con {mama.Tipo} en [{mama.Posicion[0]},{mama.Posicion[1]}]");
         }
 
         public void Relaciones()
@@ -264,7 +257,7 @@ namespace Entrega3
             {
                 //Apareamiento
                 var bitmons2 = Bitmons.Where(emp => (emp.Posicion[0] == pos[0]) && (emp.Posicion[1] == pos[1])).ToList();
-                if ((bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Taplan"))
+                if ((bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Doti" && bitmons2[1].Tipo == "Taplan") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Doti") || (bitmons2[0].Tipo == "Ent" && bitmons2[1].Tipo == "Ent") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Dorvalo" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Dorvalo") || (bitmons2[0].Tipo == "Gofue" && bitmons2[1].Tipo == "Gofue") || (bitmons2[0].Tipo == "Wetar" && bitmons2[1].Tipo == "Wetar") || (bitmons2[0].Tipo == "Taplan" && bitmons2[1].Tipo == "Taplan"))
                 {
                     CrearBitmon(bitmons2[0], bitmons2[1]);
                 }
