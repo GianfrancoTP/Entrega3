@@ -70,7 +70,7 @@ namespace Entrega3
             this.Cursor = Cursors.WaitCursor;
             if (info_end != "")
             {
-
+                Application.Restart();
             }
             if (BotonMeses.Text == "Empezar simulacion")
             {
@@ -88,7 +88,7 @@ namespace Entrega3
                     MesesBox.Text = "";
                 }
             }
-            if (mes < cantidad_mese && BotonMeses.Text != "Empezar simulacion")
+            if (mes <= cantidad_mese && BotonMeses.Text != "Empezar simulacion")
             {
                 mapa1.bitmons_creado_mes.Clear();
                 panel1.BackColor = Color.FromArgb(58, 69, 44);
@@ -99,7 +99,7 @@ namespace Entrega3
                 Ent papa = new Ent(posENT);
                 Ent mama = new Ent(posENT);
 
-                if (mes % 3 == 0)
+                if (mes % 3 == 0 && mes != 0)
                 {
                     mapa1.CrearBitmon(papa, mama);
                 }
@@ -238,8 +238,8 @@ namespace Entrega3
 
                 labelinfo.Text = info;
                 labelInfoMes.Text = infoMes;
-                mes++;
                 LabelMes.Text = "Mes: " + Convert.ToString(mes);
+                mes++;
                 if (mes == cantidad_mese)
                 {
                     info_end = "";
@@ -565,7 +565,7 @@ namespace Entrega3
                     label.Name = "label";
                     label.Size = new Size(51, 32);
                     label.TabIndex = 0;
-                    label.Font = new Font("Trebuchet MS", 16F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                    label.Font = new Font("Trebuchet MS", 8F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
                     string str = "";
                     var bitmons = mapa1.Bitmons.Where(x => (x.Posicion[0] == i) && (x.Posicion[1] == j)).ToList();
                     foreach (var bitmon in bitmons)
@@ -753,7 +753,7 @@ namespace Entrega3
                     label.Name = "label";
                     label.Size = new Size(51, 32);
                     label.TabIndex = 0;
-                    label.Font = new Font("Trebuchet MS", 16F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                    label.Font = new Font("Trebuchet MS", 8F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
                     string str = "";
                     var bitmons = mapa1.Bitmons.Where(x => (x.Posicion[0] == i) && (x.Posicion[1] == j)).ToList();
                     foreach (var bitmon in bitmons)
@@ -909,7 +909,7 @@ namespace Entrega3
                     label.Name = "label";
                     label.Size = new Size(51, 32);
                     label.TabIndex = 0;
-                    label.Font = new Font("Trebuchet MS", 16F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
+                    label.Font = new Font("Trebuchet MS", 8F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(0)));
                     string str = "";
                     var bitmons = mapa1.Bitmons.Where(x => (x.Posicion[0] == i) && (x.Posicion[1] == j)).ToList();
                     foreach (var bitmon in bitmons)
